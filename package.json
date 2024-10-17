@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "nodemon src/index.js",
-    "sass": "node-sass --watch src/resources/scss/ --output src/public/css/",
+    "build:sass": "sass src/resources/scss/app.scss src/public/css/app.css",
+    "watch:sass": "sass --watch src/resources/scss/:src/public/css/ --style=compressed",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,7 +24,7 @@
     "express": "^4.21.1",
     "express-handlebars": "^8.0.1",
     "morgan": "^1.10.0",
-    "node-sass": "^9.0.0",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "sass": "^1.80.0"
   }
 }

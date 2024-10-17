@@ -1,6 +1,5 @@
-@import 'variables';
+@use 'variables' as *;
 
 h1{
-    color: $base-color; 
-    background-color: pink;
+    color: $primary-color;
 } 
