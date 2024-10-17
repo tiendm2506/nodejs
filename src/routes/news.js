@@ -7,4 +7,3 @@ router.use('/:slug', newsController.show)
 router.use('/', newsController.index)
 
 export default router
-
