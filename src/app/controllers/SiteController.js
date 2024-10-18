@@ -1,14 +1,15 @@
 import Course from '../models/Course.js'
+import mongooseHelper from '../../utils/mongoose.js'
 class SiteController {
     // GET /home
-    index(req, res) {
+    index(req, res, next) {
         Course.find({})
-            .then((courses) => {
-                return res.json(courses)
-            })
-            .catch((err) => {
-                console.log('Error: ', err)
-            })
+            .then((courses) =>
+                res.render('pages/home', {
+                    courses: mongooseHelper.multipleMongooseToObject(courses),
+                })
+            )
+            .catch(next)
     }
 
     //GET /search
