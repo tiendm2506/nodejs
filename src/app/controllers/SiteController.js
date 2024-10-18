@@ -1,7 +1,14 @@
+import Course from '../models/Course.js'
 class SiteController {
     // GET /home
     index(req, res) {
-        res.render('pages/home')
+        Course.find({})
+            .then((courses) => {
+                return res.json(courses)
+            })
+            .catch((err) => {
+                console.log('Error: ', err)
+            })
     }
 
     //GET /search

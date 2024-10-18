@@ -5,11 +5,15 @@ import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import path from 'path'
 import routes from './routes/index.js'
+import db from './app/config/db/index.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const port = 3000
 const app = express()
+
+// Connect DB
+db.connect()
 
 // Template engine
 app.engine(
@@ -19,7 +23,7 @@ app.engine(
     })
 )
 app.set('view engine', 'hbs')
-app.set('views', path.join(__dirname, 'resources/views'))
+app.set('views', path.join(__dirname, 'resources', 'views'))
 
 //HTTP Logger
 // app.use(morgan("combined"));
@@ -34,5 +38,5 @@ app.use(express.json())
 routes(app)
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`App listening on port ${port}`)
 })
